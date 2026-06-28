@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-flow-gradient dark:bg-flow-gradient text-slate-100 transition-colors duration-300;
+}
+
+html:not(.dark) body {
+  @apply bg-flow-gradient-light text-slate-800;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 92, 252, 0.5) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 92, 252, 0.5);
+  border-radius: 999px;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.06] dark:bg-white/[0.06] backdrop-blur-xl border border-white/10 rounded-xl2 shadow-glass;
+  }
+  html:not(.dark) .glass-card {
+    @apply bg-white/70 border-white/60 shadow-md;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-violet px-5 py-2.5 font-semibold text-white shadow-glow transition-transform duration-200 hover:scale-[1.03] active:scale-95 disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-5 py-2.5 font-medium text-slate-100 transition-colors hover:bg-white/10;
+  }
+  html:not(.dark) .btn-ghost {
+    @apply border-slate-300 text-slate-700 hover:bg-slate-100;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-400 outline-none transition focus:border-violet focus:ring-2 focus:ring-violet/30;
+  }
+  html:not(.dark) .input-field {
+    @apply border-slate-200 bg-white text-slate-800 placeholder:text-slate-400;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
